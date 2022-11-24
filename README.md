@@ -14,7 +14,7 @@ J5 && Root.
 
 # What is CloudGaze?
 
-Cloudgaze is the end all be all, think shodan + google + leakix in one database. This(CloudGaze) tool crawls the greater internet of everything.
+Cloudgaze is the end all be all, think shodan + google + leakix in one database. This(CloudGaze) tool crawls the greater internet of everything. Basically, a DB full of over 45 million unique ip addresses that have been crawled and indexed.
 
 
 # Future editions
