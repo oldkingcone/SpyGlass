@@ -19,6 +19,8 @@ J5 && Root.
 
 Cloudgaze is the end all be all, think shodan + google + leakix in one database. This(CloudGaze) tool crawls the greater internet of everything. Basically, a DB full of over 45 million unique ip addresses that have been crawled and indexed(this primarily focuses on web ports, more will be added in the future.
 
+There is no GUI on the website. This is designed from the ground up to be utilized in the terminal.
+
 Utilizing this tool, it streamlines the whole process. You can tap into the database looking for a single ip address, or multiple addresses. The choice is entirely yours as shown below:
 ![](https://github.com/oldkingcone/SpyGlass/blob/main/images/data_returned_by_cg.png?raw=true)
 
