@@ -1,6 +1,6 @@
 from lib.shell.shells import CgShell
 
-cg_shell = CgShell()
+
 if __name__ == '__main__':
     while True:
         try:
