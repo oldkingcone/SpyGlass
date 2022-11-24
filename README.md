@@ -1,6 +1,9 @@
 # SpyGlass
 SpyGlass, the all in one tool for a kickass api.
 
+SpyGlass in use:
+![](https://github.com/oldkingcone/SpyGlass/blob/main/images/dashboard.png?raw=true)
+
 # Greetz
 
 J5 && Root.
@@ -15,6 +18,8 @@ J5 && Root.
 # What is CloudGaze?
 
 Cloudgaze is the end all be all, think shodan + google + leakix in one database. This(CloudGaze) tool crawls the greater internet of everything. Basically, a DB full of over 45 million unique ip addresses that have been crawled and indexed.
+Utilizing this tool, it streamlines the whole process. You can tap into the database looking for a single ip address, or multiple addresses. The choice is entirely yours as shown below:
+![](https://github.com/oldkingcone/SpyGlass/blob/main/images/data_returned_by_cg.png?raw=true)
 
 
 # Future editions
