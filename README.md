@@ -28,6 +28,7 @@ Utilizing this tool, it streamlines the whole process. You can tap into the data
 # Future editions
 - Will include SSL fingerprints, and search by SSL key (fingerprints, etc).
 - Will include DNS information, and the ability to search by domain name.
+- (the above are already written, i just need to add them to the crawler rotation and as a call within the api itself.)
 
 
 # Addendum
