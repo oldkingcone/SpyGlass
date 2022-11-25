@@ -17,7 +17,9 @@ J5 && Root.
 
 # What is CloudGaze?
 
-Cloudgaze is the end all be all, think shodan + google + leakix in one database. This(CloudGaze) tool crawls the greater internet of everything. Basically, a DB full of over 45 million unique ip addresses that have been crawled and indexed(this primarily focuses on web ports, more will be added in the future.
+Cloudgaze is the end all be all, think shodan + google + leakix in one database. This(CloudGaze) tool crawls the greater internet of everything. Basically, a DB full of over 45 million unique ip addresses that have been crawled and indexed(this primarily focuses on web ports, more will be added in the future. I hear it now, "But where are they sourced?" 
+
+I am very glad you asked that, I have a honeypot running that I log all requests made to it. This has helped me build up a very lengthy list of very obviously malicious ranges. Once confirmed through some Threat Intel and OSINT sources, they get added into the rotation and are crawled storing all historical data that I can find about the servers from the first time scanned, and appending it to the data collected by the next pass made over that specific server. Think of it as a better censys without all the reputation, because unlike those companies, I crawl the endpoints... And store that data to be returned to you the end user whenever it makes a malicious request or action against your servers/w.e it is that triggers the issue. In this single API I return to you more information about malicious domains than you can currently get, without having to do much leg work yourself.
 
 There is no GUI on the website. This is designed from the ground up to be utilized in the terminal.
 
