@@ -21,6 +21,8 @@ Cloudgaze is the end all be all, think shodan + google + leakix in one database.
 
 I am very glad you asked that, I have a honeypot running that I log all requests made to it. This has helped me build up a very lengthy list of very obviously malicious ranges. Once confirmed through some Threat Intel and OSINT sources, they get added into the rotation and are crawled storing all historical data that I can find about the servers from the first time scanned, and appending it to the data collected by the next pass made over that specific server. Think of it as a better censys without all the reputation, because unlike those companies, I crawl the endpoints... And store that data to be returned to you the end user whenever it makes a malicious request or action against your servers/w.e it is that triggers the issue. In this single API I return to you more information about malicious domains than you can currently get, without having to do much leg work yourself.
 
+Although the screenshots just show example usage and not actual data, please understand these screenshots represent the capability of this tool and not the actual database itself, it is rich with information.
+
 There is no GUI on the website. This is designed from the ground up to be utilized in the terminal.
 
 Utilizing this tool, it streamlines the whole process. You can tap into the database looking for a single ip address, or multiple addresses. The choice is entirely yours as shown below:
