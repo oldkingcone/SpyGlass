@@ -8,10 +8,10 @@ from json import dumps
 from lib.secure_storage.encrypt_key import AESCipher
 from lib.graphics.main_graphics import CGGraphics
 from lib.prompt.prom import CgPrompt
-from lib.plugins.dynamicLoadClasses import DynamicLoad
+# from lib.plugins.dynamicLoadClasses import DynamicLoad
 from lib.presets.preset_values import CGPresets
 
-plugins = DynamicLoad()
+# plugins = DynamicLoad()
 presets = CGPresets()
 cg_prompt = CgPrompt()
 store_safe = AESCipher(getpass.getpass("Enter password to encrypt/decrypt your API key store this password in a "
@@ -194,19 +194,19 @@ class CgShell(cmd.Cmd):
         c = parse_arg(arg)
         system(f"{' '.join(c)}")
 
-    def do_plugins(self, arg):
-        """
-        List all plugins
-        """
-        a = parse_arg(arg)
-        print(a)
-        cg_prompt.lastcmd = self.lastcmd
-        if a[0] == 'list':
-            plugins.list()
-        elif a[0] == 'load':
-            plugins.load(a[1])
-        elif a[0] == "load_all":
-            plugins.load_all()
+#    def do_plugins(self, arg):
+#        """
+#        List all plugins
+#        """
+#        a = parse_arg(arg)
+#        print(a)
+#        cg_prompt.lastcmd = self.lastcmd
+#        if a[0] == 'list':
+#            plugins.list()
+#        elif a[0] == 'load':
+#            plugins.load(a[1])
+#        elif a[0] == "load_all":
+#            plugins.load_all()
 
 
 def parse_arg(arg):
