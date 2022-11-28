@@ -10,7 +10,7 @@ J5 && Root.
 
 # Details
 
-- To install, you will need pycryptodome, I would strongly advise looking over the instructions for that. 
+- To install, you will need ![pycryptodome](https://www.pycryptodome.org/src/installation) (https://www.pycryptodome.org/src/installation), I would strongly advise looking over the instructions for that. 
 - depends on the requests module.
 - designed to be modular, with the end user in mind. Still working on the plugins portion, but once thats complete this will support dynamic loading of custom plugins.
 - requires a pre-shared API key to use. (This api key is for purchase.)
