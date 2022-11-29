@@ -4,18 +4,35 @@ import os
 import getpass
 from requests import get
 from os import environ, system
-from json import dumps
 from lib.secure_storage.encrypt_key import AESCipher
 from lib.graphics.main_graphics import CGGraphics
 from lib.prompt.prom import CgPrompt
 # from lib.plugins.dynamicLoadClasses import DynamicLoad
 from lib.presets.preset_values import CGPresets
+from lib.secure_storage.password_strength import CGPasswordStrength
 
+
+p = CGPasswordStrength()
 # plugins = DynamicLoad()
 presets = CGPresets()
 cg_prompt = CgPrompt()
-store_safe = AESCipher(getpass.getpass("Enter password to encrypt/decrypt your API key store this password in a "
-                                       "password manager, make sure its secure.\n->").strip())
+password = ''
+
+if not os.path.isfile(presets.CG_API_HOME + '/.cg_key'):
+    while p.strength < 8:
+        t_p = getpass.getpass("Please enter a password for your API key: ")
+        if not p.check_password(t_p):
+            print("Please enter a stronger password!\nPlease ensure that your password is at least 8 characters long "
+                  "and contains at least one uppercase letter, one lowercase letter, two numbers, "
+                  "and two special characters.")
+            continue
+        else:
+            password = t_p
+            break
+else:
+    password = getpass.getpass("Please enter your password: ")
+store_safe = AESCipher(password)
+
 system(presets.clear)
 if not os.path.isdir(presets.CG_API_HOME):
     os.mkdir(presets.CG_API_HOME)
@@ -76,21 +93,25 @@ class CgShell(cmd.Cmd):
     def do_activate(self, arg):
         """
         Activate your API Key, required for searching. Requirements pre-shared/purchased API key. example:
-        activate <API_KEY>
+        activate
+        Notice!
+
+        Please be aware, to protect your API key, it will be required that you copy and paste, or type it in by hand.
+        This is to ensure the api key is not echo'd back to the screen.
         """
         cg_prompt.lastcmd = self.lastcmd
         if not os.path.isfile(f"{presets.CG_API_HOME}/.cg_key") or not os.path.isfile(f"{presets.CG_API_HOME}/.cg_key"):
-            key = parse_arg(arg)
-            headers = { "X-Api-Key": f"{key[0]}", "User-Agent": CGPresets().user_agent }
+            key = getpass.getpass("Please enter your api key\n->").strip()
+            headers = { "X-Api-Key": f"{key}", "User-Agent": CGPresets().user_agent }
             resp = get(
                 f"https://redirecthost.online:8443/",
                 headers = headers
                 )
             if "invite only." not in resp.text:
                 print("\033[0;32m[ + ] API Key Activated [ + ]\033[0m")
-                environ.setdefault('API_IPKEY', f"{key[0]}")
+                environ.setdefault('API_IPKEY', f"{key}")
                 with open(f"{presets.CG_API_HOME}/.cg_key", 'w') as f:
-                    f.write(store_safe.encrypt(key[0]).decode())
+                    f.write(store_safe.encrypt(key).decode())
                 os.chmod(f"{presets.CG_API_HOME}/.cg_key", 0o600)
             else:
                 print("[ ! ]\033[0;31mAPI Key not activated or valid\033[0m, please reach out to the developer for "
@@ -194,19 +215,19 @@ class CgShell(cmd.Cmd):
         c = parse_arg(arg)
         system(f"{' '.join(c)}")
 
-#    def do_plugins(self, arg):
-#        """
-#        List all plugins
-#        """
-#        a = parse_arg(arg)
-#        print(a)
-#        cg_prompt.lastcmd = self.lastcmd
-#        if a[0] == 'list':
-#            plugins.list()
-#        elif a[0] == 'load':
-#            plugins.load(a[1])
-#        elif a[0] == "load_all":
-#            plugins.load_all()
+    # def do_plugins(self, arg):
+    #     """
+    #     List all plugins
+    #     """
+    #     a = parse_arg(arg)
+    #     print(a)
+    #     cg_prompt.lastcmd = self.lastcmd
+    #     if a[0] == 'list':
+    #         plugins.list()
+    #     elif a[0] == 'load':
+    #         plugins.load(a[1])
+    #     elif a[0] == "load_all":
+    #         plugins.load_all()
 
 
 def parse_arg(arg):
