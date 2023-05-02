@@ -143,7 +143,17 @@ class CgShell(cmd.Cmd):
                 j_data = resp.json()
                 print("{")
                 for da in j_data.__iter__():
-                    print(f"\t\033[0;34m{da}\033[0m : \033[2;35m{j_data[da]}\033[0m")
+                    if str(da) == "Open Ports":
+                        a = str(j_data[da]).replace("\n", ", ")
+                        print(f"\t\033[0;34m{da}\033[0m : \033[2;35m{a}\033[0m")
+                    elif str(da) == "Interesting Shit Found":
+                        a = str(j_data[da]).replace("\n", "\n\t\t")
+                        print(f"\t\033[0;34m{da}\033[0m :\n\t\t\033[2;36m{a}\033[0m")
+                    elif str(da) == "Server Header":
+                        sh = str(j_data[da]).replace(",", "\n\t\t")
+                        print(f"\t\033[0;34m{da}\033[0m :\n\t\t\033[2;36m{sh}\033[0m")
+                    else:
+                        print(f"\t\033[0;34m{da}\033[0m : \033[2;35m{j_data[da]}\033[0m")
                 print("}")
                 input('Press Enter to continue...')
         else:
@@ -166,7 +176,17 @@ class CgShell(cmd.Cmd):
                     j_data = resp.json()
                     print("{")
                     for da in j_data.__iter__():
-                        print(f"\t\033[0;34m{da}\033[0m : \033[2;35m{j_data[da]}\033[0m")
+                        if str(da) == "Open Ports":
+                            a = str(j_data[da]).replace("\n", ", ")
+                            print(f"\t\033[0;34m{da}\033[0m : \033[2;35m{a}\033[0m")
+                        elif str(da) == "Interesting Shit Found":
+                            a = str(j_data[da]).replace("\n", "\n\t\t")
+                            print(f"\t\033[0;34m{da}\033[0m :\n\t\t\033[2;36m{a}\033[0m")
+                        elif str(da) == "Server Header":
+                            sh = str(j_data[da]).replace(",", "\n\t\t")
+                            print(f"\t\033[0;34m{da}\033[0m :\n\t\t\033[2;36m{sh}\033[0m")
+                        else:
+                            print(f"\t\033[0;34m{da}\033[0m : \033[2;35m{j_data[da]}\033[0m")
                     print("}")
                     input('Press Enter to continue...')
         else:
@@ -187,7 +207,17 @@ class CgShell(cmd.Cmd):
             j_data = resp.json()
             print("{")
             for da in j_data.__iter__():
-                print(f"\t\033[0;34m{da}\033[0m : \033[2;35m{j_data[da]}\033[0m")
+                if str(da) == "Open Ports":
+                    a = str(j_data[da]).replace("\n", ", ")
+                    print(f"\t\033[0;34m{da}\033[0m : \033[2;35m{a}\033[0m")
+                elif str(da) == "Interesting Shit Found":
+                    a = str(j_data[da]).replace("\n", "\n\t\t")
+                    print(f"\t\033[0;34m{da}\033[0m :\n\t\t\033[2;36m{a}\033[0m")
+                elif str(da) == "Server Header":
+                    sh = str(j_data[da]).replace(",", "\n\t\t")
+                    print(f"\t\033[0;34m{da}\033[0m :\n\t\t\033[2;36m{sh}\033[0m")
+                else:
+                    print(f"\t\033[0;34m{da}\033[0m : \033[2;35m{j_data[da]}\033[0m")
             print("}")
         else:
             print("API Key not activated, please activate your API Key using the activate command, if you need "
